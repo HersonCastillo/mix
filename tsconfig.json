@@ -3,7 +3,7 @@
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
-    "jsx": "preserve",
+    "noImplicitThis": false,
     "module": "CommonJS",
     "target": "ESNext",
     "allowJs": true,
@@ -11,16 +11,19 @@
     "outDir": "./dist",
     "removeComments": true,
     "paths": {
-      "shared/*": ["src/shared/*"],
       "interfaces/*": ["src/interfaces/*"],
       "packages/*": ["src/packages/*"]
     },
-    "moduleResolution": "node",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "inlineSourceMap": true,
+    "declaration": true,
+    "declarationMap": true
   },
   "files": ["src/index.ts"],
-  "include": ["src/**/*.tsx", "src/**/*.ts"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
 }
