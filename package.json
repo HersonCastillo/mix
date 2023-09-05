@@ -1,12 +1,11 @@
 {
   "name": "@duox/mix",
-  "version": "0.0.1",
+  "version": "0.0.1+1",
   "description": "Mix all you want",
-  "main": "index.js",
   "scripts": {
     "start": "tsc --watch",
     "build": "tsc",
-    "prebuild": "rm -rf ./dist",
+    "prebuild": "rm -rf ./dist/packages",
     "prepublish": "npm run build"
   },
   "repository": {
@@ -34,8 +33,9 @@
   "devDependencies": {
     "@types/lodash.isequal": "^4.5.6"
   },
+  "main": "dist/packages",
   "files": [
-    "dist"
+    "dist/packages"
   ],
-  "types": "dist"
+  "types": "dist/packages"
 }
