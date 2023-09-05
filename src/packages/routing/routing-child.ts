@@ -1,6 +1,6 @@
 import { ILazyModule } from 'interfaces/lazy-module';
 import { IRoute, TRoutingOptions } from 'interfaces/routes';
-import provide from 'packages/core/provider';
+import provide from '../core/provider';
 import { routing } from './routing';
 import { RoutingToken } from './routing-token';
 

@@ -1,6 +1,6 @@
 import { IRoute, TRoutingOptions } from 'interfaces/routes';
-import { component } from 'packages/core/component';
-import provide from 'packages/core/provider';
+import { component } from '../core/component';
+import provide from '../core/provider';
 import { RoutingToken } from './routing-token';
 import { ifMatches } from './utils/matches';
 import { validateRoute } from './utils/validate-route';

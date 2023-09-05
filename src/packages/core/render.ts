@@ -1,5 +1,5 @@
-import { getElementId } from 'packages/shared/utils/unique-id';
 import { Observable } from '../reactivity/observable';
+import { getElementId } from '../shared/unique-id';
 
 export const deletion = (element: HTMLElement, callback: () => void) => {
   const onMutation = (

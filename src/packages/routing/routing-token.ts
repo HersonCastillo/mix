@@ -1,4 +1,4 @@
-import { injectable } from 'packages/shared/decorators/injectable';
+import { injectable } from '../core/decorators';
 
 @injectable
 export class RoutingToken {

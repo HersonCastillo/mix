@@ -1,4 +1,4 @@
-import { generateUniqueId } from 'packages/shared/utils/unique-id';
+import { generateUniqueId } from '../shared';
 
 type ObserverCallback<T> = (data: T, id: string) => void;
 

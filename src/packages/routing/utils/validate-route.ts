@@ -1,4 +1,4 @@
-import provide from 'packages/core/provider';
+import provide from '../../core/provider';
 import { RoutingToken } from '../routing-token';
 
 export const validateRoute = (

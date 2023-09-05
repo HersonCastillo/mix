@@ -1,5 +1,5 @@
 import { IComponentProps, IElementProps } from 'interfaces/component';
-import { component, component as c } from 'packages/core';
+import { component, component as c } from '../component';
 
 const prerender =
   (tagName: TemplateStringsArray) =>

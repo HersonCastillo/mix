@@ -1,4 +1,4 @@
-import { Observable } from 'packages/reactivity/observable';
+import { Observable } from '../../reactivity/observable';
 
 export const combine = (
   ...observables$: Array<Observable<unknown>>

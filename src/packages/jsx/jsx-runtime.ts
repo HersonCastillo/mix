@@ -1,5 +1,5 @@
 import { IComponentProps } from 'interfaces/component';
-import { component, fragment } from 'packages/core/component';
+import { component, fragment } from '../core/component';
 
 export const jsx = (tag: string, props: IComponentProps) => {
   if (tag === '::fragment') {

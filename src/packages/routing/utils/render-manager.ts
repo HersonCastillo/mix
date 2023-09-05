@@ -1,7 +1,7 @@
 import { ILazyModule } from 'interfaces/lazy-module';
 import { IRoute } from 'interfaces/routes';
-import { render } from 'packages/core/render';
-import { Observable } from 'packages/reactivity/observable';
+import { render } from '../../core/render';
+import { Observable } from '../../reactivity/observable';
 
 export const clearElement = (element: HTMLElement) => {
   Array.from(element.children).forEach((node) => node.remove());

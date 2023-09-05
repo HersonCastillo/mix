@@ -1,6 +1,6 @@
 {
   "name": "@duox/mix",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Mix all you want",
   "scripts": {
     "start": "tsc --watch",
@@ -33,9 +33,5 @@
   "devDependencies": {
     "@types/lodash.isequal": "^4.5.6"
   },
-  "main": "dist/packages",
-  "files": [
-    "dist"
-  ],
-  "types": "dist/packages"
+  "main": "dist/packages"
 }

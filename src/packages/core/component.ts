@@ -1,6 +1,6 @@
 import { IComponentProps, IElementProps } from 'interfaces/component';
-import { attachElementId } from 'packages/shared/utils/unique-id';
 import { Observable } from '../reactivity/observable';
+import { attachElementId } from '../shared/unique-id';
 import { render } from './render';
 
 export const fragment = (...children: HTMLElement[]) => {

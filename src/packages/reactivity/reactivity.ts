@@ -1,6 +1,6 @@
 import { IReactivityProps } from 'interfaces/reactivity';
-import { provide, state } from 'packages/core';
-import { params } from 'packages/routing';
+import { provide, state } from '../core';
+import { params } from '../routing';
 import { Observable } from './observable';
 
 export const fromEvent = <T extends HTMLElement, K>(

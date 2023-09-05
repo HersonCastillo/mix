@@ -1,5 +1,5 @@
-import { from } from 'packages/reactivity';
-import { generateUniqueId } from 'packages/shared/utils/unique-id';
+import { from } from '../reactivity';
+import { generateUniqueId } from '../shared/unique-id';
 import { fragment } from './component';
 
 export type Signal<T> = {
