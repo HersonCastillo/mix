@@ -1,0 +1,36 @@
+{
+  "name": "mix",
+  "version": "0.0.1",
+  "description": "Mix all you want",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc --watch",
+    "build": "tsc",
+    "prebuild": "rm -rf ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HersonCastillo/mix.git"
+  },
+  "keywords": [
+    "Mix",
+    "Typescript",
+    "Javascript",
+    "JSX",
+    "Injection"
+  ],
+  "author": "Herson Castillo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HersonCastillo/mix/issues"
+  },
+  "homepage": "https://github.com/HersonCastillo/mix#readme",
+  "dependencies": {
+    "axios": "^1.5.0",
+    "lodash.isequal": "^4.5.0",
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@types/lodash.isequal": "^4.5.6"
+  }
+}

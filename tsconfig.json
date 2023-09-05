@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "jsx": "preserve",
+    "module": "CommonJS",
+    "target": "ESNext",
+    "allowJs": true,
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "removeComments": true,
+    "paths": {
+      "shared/*": ["src/shared/*"],
+      "interfaces/*": ["src/interfaces/*"],
+      "packages/*": ["src/packages/*"]
+    },
+    "moduleResolution": "node",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  },
+  "files": ["src/index.ts"],
+  "include": ["src/**/*.tsx", "src/**/*.ts"],
+  "exclude": ["node_modules"]
+}
