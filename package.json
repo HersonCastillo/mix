@@ -1,12 +1,12 @@
 {
   "name": "@duox/mix",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Mix all you want",
   "scripts": {
     "start": "tsc --watch",
     "build": "tsc",
-    "prebuild": "rm -rf ./dist/packages",
-    "prepublish": "npm run build"
+    "prebuild": "rm -rf ./dist",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
   },
   "main": "dist/packages",
   "files": [
-    "dist/packages"
+    "dist"
   ],
-  "types": "dist/packages"
+  "types": "dist"
 }
