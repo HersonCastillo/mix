@@ -1,6 +1,5 @@
 {
   "name": "@duox/mix",
-  "private": false,
   "version": "0.0.1",
   "description": "Mix all you want",
   "main": "index.js",
