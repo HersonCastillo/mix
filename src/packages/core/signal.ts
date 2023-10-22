@@ -4,7 +4,7 @@ import { fragment } from './component';
 
 export type Signal<T> = {
   id: string;
-  set: (value: T) => void;
+  set: (value: T, emit?: boolean) => void;
   get: () => T | undefined;
   history: () => Record<number, T>;
   fragment: DocumentFragment;
@@ -28,13 +28,16 @@ export const signal = <T>(value: T): Signal<T> => {
   return {
     id,
     fragment: element,
-    set: (value: T) => {
+    set: (value, emit = true) => {
       if (typeof value !== 'object' && value === getValue()) {
         return;
       }
 
       registry[new Date().getTime()] = value;
-      element.dispatchEvent(event);
+
+      if (emit) {
+        element.dispatchEvent(event);
+      }
     },
     get: (): T | undefined => {
       return getValue();

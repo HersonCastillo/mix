@@ -1,63 +1,74 @@
-// import { StoreActions } from 'services/store/actions';
-// import { createReducers } from 'services/store/reducers';
-// import { IAppState, initialState } from 'services/store/state';
-// import { injectable } from 'packages/shared/decorators/injectable';
-// import { Observable } from 'packages/reactivity/observable';
-// import { from } from 'packages/reactivity/reactivity';
+import { Signal, signal } from '../core';
+import { injectable } from '../core/decorators';
 
-// export interface IStoreData extends IAppState {}
+type ReducerFn<T, K = {}> = (state: T, payload: K) => T;
+type SignalMap<T, K = unknown> = Record<keyof T, Signal<K>>;
 
-// export type ReducerFn<T = undefined> = (
-//   state: IStoreData,
-//   payload?: T,
-// ) => IStoreData;
+export type ReducersMap<T> = Record<string, ReducerFn<T>>;
 
-// export type SelectorFn<T> = (state: IStoreData) => T;
-// export type MandatorySelectorFn<T> = (observable$: Observable<T>) => {
-//   id: string;
-//   selectorFn: SelectorFn<T>;
-// };
+@injectable
+export class Store<T> {
+  private state!: T;
+  private reducers: ReducersMap<T> = {};
+  private subscription!: SignalMap<T>;
 
-// export class Store {
-//   data: IStoreData = initialState;
-//   selector$ = from(this.data);
-//   active: Record<string, Observable<unknown>> = {};
+  init(state: T, reducers: ReducersMap<T>) {
+    this.state = state;
+    this.reducers = reducers;
 
-//   select<T>(mandatorySelectorFn: MandatorySelectorFn<T>): Observable<T> {
-//     const observable$ = new Observable<T>();
-//     const { id, selectorFn } = mandatorySelectorFn(observable$);
+    this.assignSignals();
+  }
 
-//     if (this.active[id]) {
-//       return this.active[id] as Observable<T>;
-//     }
+  assignSignals() {
+    for (const [key, value] of Object.entries(this.state || {})) {
+      this.subscription = {
+        ...this.subscription,
+        [key as keyof T]: signal(value),
+      };
+    }
+  }
 
-//     const onSuscription = (data: IStoreData) => selectorFn(data);
-//     this.selector$.subscribe(onSuscription);
+  updateSignalValues(except: (keyof T)[]) {
+    for (const [key, value] of Object.entries(this.subscription || {})) {
+      if (except.includes(key as keyof T)) {
+        continue;
+      }
 
-//     this.active[id] = observable$;
+      const currentStateValue = this.state[key as keyof T];
+      (value as Signal<unknown>).set(currentStateValue, false);
+    }
+  }
 
-//     return observable$;
-//   }
-// }
+  select<K>(key: keyof T): Signal<K> {
+    return this.subscription[key] as Signal<K>;
+  }
 
-// class Reducer extends Store {
-//   private reducer: Record<StoreActions, ReducerFn> = createReducers();
+  dispatch<K>(action: string, payload: K | null, emit: (keyof T)[]) {
+    const fn = this.reducers[action];
 
-//   reduce<T>(actionName: StoreActions, payload?: T): IStoreData {
-//     const reducerFn = this.reducer[actionName] as ReducerFn<T>;
-//     const data = reducerFn(this.data, payload);
-//     this.data = data;
+    if (!!fn) {
+      const newState = fn(this.state, payload ?? {});
+      const prevState = this.state;
 
-//     return data;
-//   }
-// }
+      this.state = newState;
 
-// export class Actions extends Reducer {
-//   dispatch<T>(actionName: StoreActions, payload?: T): void {
-//     const data = this.reduce(actionName, payload);
-//     this.selector$.emit(data);
-//   }
-// }
+      this.updateSignalValues(emit);
 
-// @injectable
-// export class VirtualStore extends Actions {}
+      for (const entry of emit) {
+        const value = newState[entry];
+
+        // ? Check if prev-value and new-value are the same?
+        const isSame =
+          (typeof value === 'object' &&
+            JSON.stringify(value) === JSON.stringify(prevState[entry])) ||
+          (typeof value !== 'object' && value === prevState[entry]);
+
+        this.select(entry).set(value, !isSame);
+      }
+
+      return;
+    }
+
+    throw new Error(`Action not found for Store: [${action}]`);
+  }
+}

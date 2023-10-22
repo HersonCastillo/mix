@@ -1,5 +1,8 @@
-import axios from 'axios';
+import axios, { CreateAxiosDefaults } from 'axios';
 
-const createFetch = (baseURL: string) => axios.create({ baseURL });
+const createFetch = (
+  baseURL: string,
+  config?: Partial<Omit<CreateAxiosDefaults, 'baseURL'>>,
+) => axios.create({ baseURL, ...config });
 
 export default createFetch;
