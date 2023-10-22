@@ -1,4 +1,4 @@
-import { ClassType } from 'interfaces/class-type';
+import { ClassType } from '../../interfaces/class-type';
 
 class Singleton {
   private providers: Map<string, unknown> = new Map();

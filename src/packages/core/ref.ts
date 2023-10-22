@@ -1,4 +1,4 @@
-import { IComponentRef } from 'interfaces/component';
+import { IComponentRef } from '../../interfaces/component';
 
 export const ref = <T extends HTMLElement>(
   effect?: (element: HTMLElement) => void,

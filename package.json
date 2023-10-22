@@ -1,6 +1,6 @@
 {
   "name": "@duox/mix",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Mix all you want",
   "scripts": {
     "start": "tsc --watch",

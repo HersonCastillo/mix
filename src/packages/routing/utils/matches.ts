@@ -1,4 +1,4 @@
-import { IRoute, TRoutingOptions } from 'interfaces/routes';
+import { IRoute, TRoutingOptions } from '../../../interfaces/routes';
 import { clearElement, handleRenderization } from './render-manager';
 
 export const ifMatches = async (

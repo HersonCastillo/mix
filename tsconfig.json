@@ -10,9 +10,6 @@
     "baseUrl": ".",
     "outDir": "./dist",
     "removeComments": true,
-    "paths": {
-      "interfaces/*": ["src/interfaces/*"]
-    },
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,

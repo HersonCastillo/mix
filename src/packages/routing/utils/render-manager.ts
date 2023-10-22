@@ -1,5 +1,5 @@
-import { ILazyModule } from 'interfaces/lazy-module';
-import { IRoute } from 'interfaces/routes';
+import { ILazyModule } from '../../../interfaces/lazy-module';
+import { IRoute } from '../../../interfaces/routes';
 import { render } from '../../core/render';
 import { Observable } from '../../reactivity/observable';
 

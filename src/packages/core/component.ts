@@ -1,4 +1,4 @@
-import { IComponentProps, IElementProps } from 'interfaces/component';
+import { IComponentProps, IElementProps } from '../../interfaces/component';
 import { Observable } from '../reactivity/observable';
 import { attachElementId } from '../shared/unique-id';
 import { render } from './render';

@@ -1,4 +1,4 @@
-import { IRoute, TRoutingOptions } from 'interfaces/routes';
+import { IRoute, TRoutingOptions } from '../../interfaces/routes';
 import { component } from '../core/component';
 import provide from '../core/provider';
 import { RoutingToken } from './routing-token';

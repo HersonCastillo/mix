@@ -1,4 +1,4 @@
-import { IComponentProps, IElementProps } from 'interfaces/component';
+import { IComponentProps, IElementProps } from '../../../interfaces/component';
 import { component, component as c } from '../component';
 
 const prerender =

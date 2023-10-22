@@ -1,4 +1,4 @@
-import { IReactivityProps } from 'interfaces/reactivity';
+import { IReactivityProps } from '../../interfaces/reactivity';
 import { provide, state } from '../core';
 import { params } from '../routing';
 import { Observable } from './observable';
