@@ -1,14 +1,14 @@
-import { ILazyModule } from './lazy-module';
+import { LazyModule } from './lazy-module';
 
-export interface IRoute {
+export interface Route {
   path: string;
-  component?: ILazyModule<unknown> | null;
-  canActivate?: (route: IRoute) => boolean;
-  loadChild?: ILazyModule<unknown, IRoute[]>;
-  children?: IRoute[];
+  component?: LazyModule<unknown> | null;
+  canActivate?: (route: Route) => boolean;
+  loadChild?: LazyModule<unknown, Route[]>;
+  children?: Route[];
 }
 
-export type TRoutingOptions = {
+export type RoutingOptions = {
   isChildren: boolean;
-  onUpdate: (route: IRoute | null) => void;
+  onUpdate: (route: Route | null) => void;
 };

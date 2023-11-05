@@ -10,19 +10,19 @@ export type ChildrenTypes =
   | null
   | undefined;
 
-export interface IComponentProps {
+export interface ComponentProps {
   id?: string;
   className?: string | string[];
   children?: ComponentChildren;
-  ref?: IComponentRef;
+  ref?: ComponentRef;
   style?: ElementCSSInlineStyle;
 }
 
-export interface IComponentRef<T = HTMLElement> {
+export interface ComponentRef<T = HTMLElement> {
   current: T | null;
   effect?: (element: HTMLElement) => void;
 }
 
-export interface IElementProps {
+export interface ElementProps {
   [x: string]: string;
 }

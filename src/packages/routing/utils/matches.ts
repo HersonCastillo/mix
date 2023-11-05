@@ -1,12 +1,12 @@
-import { IRoute, TRoutingOptions } from '../../../interfaces/routes';
+import { Route, RoutingOptions } from '../../../interfaces';
 import { clearElement, handleRenderization } from './render-manager';
 
 export const ifMatches = async (
-  matches: IRoute | null,
+  matches: Route | null,
   element: HTMLElement,
   hash: string[],
-  routes: IRoute[],
-  options?: Partial<TRoutingOptions>,
+  routes: Route[],
+  options?: Partial<RoutingOptions>,
 ) => {
   if (!matches) {
     const notFoundMatcher = routes.find(({ path }) => path.at(0) === '*');

@@ -1,7 +1,7 @@
-import { IComponentProps } from '../../interfaces/component';
+import { ComponentProps } from '../../interfaces';
 import { component, fragment } from '../core/component';
 
-export const jsx = (tag: string, props: IComponentProps) => {
+export const jsx = (tag: string, props: ComponentProps) => {
   if (tag === '::fragment') {
     const current = props.children as HTMLElement | HTMLElement[];
 

@@ -1,4 +1,4 @@
-import { IReactivityProps } from '../../interfaces/reactivity';
+import { ReactivityProps } from '../../interfaces';
 import { provide, state } from '../core';
 import { params } from '../routing';
 import { Observable } from './observable';
@@ -27,7 +27,7 @@ export const from = <T = any>(initialValue: T) => {
 };
 
 export const reactivity = (
-  fn?: (props: IReactivityProps) => HTMLElement,
+  fn?: (props: ReactivityProps) => HTMLElement,
 ): Observable<HTMLElement> | null => {
   let observable$: Observable<HTMLElement> | null = null;
 

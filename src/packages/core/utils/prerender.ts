@@ -1,9 +1,8 @@
-import { IComponentProps, IElementProps } from '../../../interfaces/component';
+import { ComponentProps, ElementProps } from '../../../interfaces';
 import { component, component as c } from '../component';
 
 const prerender =
-  (tagName: TemplateStringsArray) =>
-  (props?: IComponentProps | IElementProps) =>
+  (tagName: TemplateStringsArray) => (props?: ComponentProps | ElementProps) =>
     c(tagName.toString(), props);
 
 export const div = prerender`div`;
@@ -33,16 +32,16 @@ export const ul = prerender`ul`;
 export const empty = (): HTMLElement =>
   document.createTextNode('') as unknown as HTMLElement;
 
-export const observe = (children: IComponentProps['children']) =>
+export const observe = (children: ComponentProps['children']) =>
   component('::obx', { children });
 
 export const title = (
   level: 1 | 2 | 3 | 4 | 5 | 6,
-  props?: IComponentProps | IElementProps,
+  props?: ComponentProps | ElementProps,
 ) => c(`h${level}`, props);
 
 export const icon = (
   name: string,
   isFill = false,
-  props?: IComponentProps | IElementProps,
+  props?: ComponentProps | ElementProps,
 ) => c('i', { className: `ri-${name}-${isFill ? 'fill' : 'line'}`, ...props });

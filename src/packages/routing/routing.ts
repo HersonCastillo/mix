@@ -1,4 +1,4 @@
-import { IRoute, TRoutingOptions } from '../../interfaces/routes';
+import { Route, RoutingOptions } from '../../interfaces';
 import { component } from '../core/component';
 import provide from '../core/provider';
 import { RoutingToken } from './routing-token';
@@ -7,8 +7,8 @@ import { validateRoute } from './utils/validate-route';
 
 export const routing = async (
   name: string,
-  routes: IRoute[],
-  options?: Partial<TRoutingOptions>,
+  routes: Route[],
+  options?: Partial<RoutingOptions>,
 ): Promise<HTMLElement> => {
   const element = component('::routing');
   const token = provide(RoutingToken);

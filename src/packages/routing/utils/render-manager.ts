@@ -1,5 +1,4 @@
-import { ILazyModule } from '../../../interfaces/lazy-module';
-import { IRoute } from '../../../interfaces/routes';
+import { Route, LazyModule } from '../../../interfaces';
 import { render } from '../../core/render';
 import { Observable } from '../../reactivity/observable';
 
@@ -8,7 +7,7 @@ export const clearElement = (element: HTMLElement) => {
 };
 
 export const renderComponent = async (
-  component: ILazyModule<Observable<HTMLElement> | HTMLElement>,
+  component: LazyModule<Observable<HTMLElement> | HTMLElement>,
   element: HTMLElement,
 ) => {
   const content = (await component).default();
@@ -27,7 +26,7 @@ export const renderComponent = async (
 };
 
 export const handleRenderization = async (
-  { component, loadChild, children, ...rest }: IRoute,
+  { component, loadChild, children, ...rest }: Route,
   hash: string[],
   element: HTMLElement,
 ) => {

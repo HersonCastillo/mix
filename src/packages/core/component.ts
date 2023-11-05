@@ -1,4 +1,4 @@
-import { IComponentProps, IElementProps } from '../../interfaces/component';
+import { ComponentProps, ElementProps } from '../../interfaces';
 import { Observable } from '../reactivity/observable';
 import { attachElementId } from '../shared/unique-id';
 import { render } from './render';
@@ -26,8 +26,8 @@ export const component = (
   tag:
     | string
     | HTMLElement
-    | ((props?: IComponentProps | IElementProps) => HTMLElement),
-  props?: IComponentProps | IElementProps,
+    | ((props?: ComponentProps | ElementProps) => HTMLElement),
+  props?: ComponentProps | ElementProps,
 ) => {
   if (typeof tag === 'function') {
     return tag(props);
