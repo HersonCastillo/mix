@@ -1,5 +1,6 @@
 import { Signal, signal } from '../core';
 import { injectable } from '../core/decorators';
+import isEqual from 'lodash.isequal';
 
 type ReducerFn<T, K = {}> = (state: T, payload: K) => T;
 type SignalMap<T, K = unknown> = Record<keyof T, Signal<K>>;
@@ -59,8 +60,7 @@ export class Store<T> {
 
         // ? Check if prev-value and new-value are the same?
         const isSame =
-          (typeof value === 'object' &&
-            JSON.stringify(value) === JSON.stringify(prevState[entry])) ||
+          (typeof value === 'object' && isEqual(value, prevState[entry])) ||
           (typeof value !== 'object' && value === prevState[entry]);
 
         this.select(entry).set(value, !isSame);
