@@ -1,6 +1,6 @@
-import { Signal, signal } from '../core';
-import { injectable } from '../core/decorators';
 import isEqual from 'lodash.isequal';
+import { signal, Signal } from '../core';
+import { injectable } from '../core/decorators';
 
 type ReducerFn<T, K = {}> = (state: T, payload: K) => T;
 type SignalMap<T, K = unknown> = Record<keyof T, Signal<K>>;
@@ -44,7 +44,7 @@ export class Store<T> {
     return this.subscription[key] as Signal<K>;
   }
 
-  dispatch<K>(action: string, payload: K | null, emit: (keyof T)[]) {
+  dispatch<K>(action: string, payload: K | null, emit: (keyof T)[] = []) {
     const fn = this.reducers[action];
 
     if (!!fn) {
