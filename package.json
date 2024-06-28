@@ -4,7 +4,7 @@
   "description": "Mix all you want",
   "scripts": {
     "start": "tsc --watch",
-    "build": "tsc",
+    "build": "tsc && cp -r types dist",
     "prebuild": "rm -rf ./dist",
     "prepare": "npm run build"
   },
