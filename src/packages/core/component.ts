@@ -1,15 +1,13 @@
 import { ComponentProps, ElementProps } from '../../interfaces';
-import { Observable } from '../reactivity/observable';
-import { attachElementId } from '../shared/unique-id';
+import { Observable } from '../context/observable';
+import { setElementId } from '../shared/unique-id';
 import { render } from './render';
 
 export const fragment = (...children: HTMLElement[]) => {
   const base = document.createDocumentFragment();
 
-  for (const child of children) {
-    if (child instanceof Node) {
-      base.appendChild(child);
-    }
+  for (const child of children.filter((_child) => _child instanceof Node)) {
+    base.appendChild(child);
   }
 
   return base;
@@ -34,9 +32,7 @@ export const component = (
   }
 
   const element =
-    typeof tag === 'string'
-      ? attachElementId(document.createElement(tag))
-      : tag;
+    typeof tag === 'string' ? setElementId(document.createElement(tag)) : tag;
 
   if (!props) {
     return element;
@@ -80,6 +76,7 @@ export const component = (
           onObservableChildren(child, element);
         } else {
           if (child instanceof Promise) {
+            // ! Just for routing - for lazy components use `fromPromise` operator
             child.then((resolved) => element.appendChild(resolved));
           } else {
             element.appendChild(child!);
@@ -94,6 +91,7 @@ export const component = (
       onObservableChildren(children, element);
     } else {
       if (children instanceof Promise) {
+        // ! Just for routing - for lazy components use `fromPromise` operator
         children.then((resolved) => element.appendChild(resolved));
       } else {
         element.appendChild(children);

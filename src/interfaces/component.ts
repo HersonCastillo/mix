@@ -1,4 +1,4 @@
-import { Observable } from '../packages/reactivity';
+import { Observable } from '../packages/context';
 
 export type ComponentChildren = ChildrenTypes | ChildrenTypes[];
 

@@ -4,7 +4,7 @@ export const generateUniqueId = (): string => {
   return timestamp.concat(randomStr);
 };
 
-export const attachElementId = (
+export const setElementId = (
   element: HTMLElement,
   propName = 'elementId',
   value = generateUniqueId(),

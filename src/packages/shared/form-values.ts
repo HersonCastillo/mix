@@ -1,3 +1,6 @@
+/**
+ * @deprecated
+ */
 export const handleSubmit = (submitFn: (values: unknown) => void) => {
   return (event: Event) => {
     const target = event.target as HTMLInputElement;

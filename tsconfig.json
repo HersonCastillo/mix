@@ -6,7 +6,7 @@
     "noImplicitThis": false,
     "module": "CommonJS",
     "target": "ESNext",
-    "allowJs": true,
+    "allowJs": false,
     "baseUrl": ".",
     "outDir": "./dist",
     "removeComments": true,
@@ -15,7 +15,7 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "inlineSourceMap": true,
+    "sourceMap": true,
     "declaration": true,
     "declarationMap": true
   },

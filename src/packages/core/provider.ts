@@ -14,7 +14,7 @@ class Singleton {
 
   getProvider<T>(Provider: ClassType<T>): T {
     if (!this.exists(Provider.name)) {
-      throw new Error(`No provider for: ${Provider.name}`);
+      throw new Error(`No provider allocated for: ${Provider.name}`);
     }
 
     return this.providers.get(Provider.name) as T;

@@ -1,4 +1,4 @@
-import { Observable } from '../reactivity/observable';
+import { Observable } from '../context/observable';
 import { getElementId } from '../shared/unique-id';
 
 export const deletion = (element: HTMLElement, callback: () => void) => {
@@ -32,8 +32,6 @@ export const render = async (
   let prev: HTMLElement | null = null;
 
   if (context instanceof Observable) {
-    // console.log(context);
-
     const onContext = (element: HTMLElement) => {
       if (
         typeof element === 'boolean' ||
@@ -46,10 +44,6 @@ export const render = async (
       if (prev && getElementId(element) === getElementId(prev)) {
         return;
       }
-
-      // if (element?.nodeName === 'DIV') {
-      //   console.log(element);
-      // }
 
       if (prev && container.contains(prev)) {
         prev.replaceWith(element);

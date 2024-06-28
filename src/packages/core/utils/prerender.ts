@@ -1,5 +1,5 @@
 import { ComponentProps, ElementProps } from '../../../interfaces';
-import { component, component as c } from '../component';
+import { component as c } from '../component';
 
 const prerender =
   (tagName: TemplateStringsArray) => (props?: ComponentProps | ElementProps) =>
@@ -33,15 +33,4 @@ export const empty = (): HTMLElement =>
   document.createTextNode('') as unknown as HTMLElement;
 
 export const observe = (children: ComponentProps['children']) =>
-  component('::obx', { children });
-
-export const title = (
-  level: 1 | 2 | 3 | 4 | 5 | 6,
-  props?: ComponentProps | ElementProps,
-) => c(`h${level}`, props);
-
-export const icon = (
-  name: string,
-  isFill = false,
-  props?: ComponentProps | ElementProps,
-) => c('i', { className: `ri-${name}-${isFill ? 'fill' : 'line'}`, ...props });
+  c('::observer', { children });
