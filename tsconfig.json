@@ -15,7 +15,7 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "inlineSourceMap": true,
+    "sourceMap": true,
     "declaration": true,
     "declarationMap": true
   },

@@ -1,4 +1,4 @@
-import { from } from '../reactivity';
+import { from } from '../context';
 import { generateUniqueId } from '../shared/unique-id';
 import { fragment } from './component';
 
@@ -66,7 +66,7 @@ export const listen = <T>(
 ) => {
   const current$ = from(elementCallback(signal.get()));
 
-  const callback = () => current$.emit(elementCallback(signal.get()));
+  const callback = () => current$.next(elementCallback(signal.get()));
 
   signal.fragment.addEventListener(signal.id, callback);
 

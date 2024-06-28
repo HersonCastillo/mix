@@ -4,7 +4,6 @@ export { default as provide, createProvider } from './provider';
 export { ref } from './ref';
 export { deletion, render } from './render';
 export { effects, listen, signal, Signal } from './signal';
-export { state } from './state';
 export { memo } from './memoize';
 export { injectable } from './decorators';
 export * from './utils/prerender';
